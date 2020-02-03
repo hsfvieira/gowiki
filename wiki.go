@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"log"
 	"regexp"
+	"os"
 	"errors"
 )
 
@@ -91,5 +92,5 @@ func main() {
 	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", makeHandler(editHandler))
 	http.HandleFunc("/save/", makeHandler(saveHandler))
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":" + os.Getenv("PORT"), nil))
 }
